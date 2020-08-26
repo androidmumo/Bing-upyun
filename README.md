@@ -49,7 +49,13 @@ https://abc.mcloc.cn/abc/bing/index.php
 
 ##### 6.1 修改又拍云连接信息
 
-请在`/php/index.php`中修改：
+请在 `/index.php` 中修改：
+
+```
+$imgurl = 'https://***.***.***/' . $image_name; //此处填又拍云加速域名。注：结尾的 / 不能省略
+```
+
+在`/php/index.php`中修改：
 
 ```php
 //又拍云连接信息
