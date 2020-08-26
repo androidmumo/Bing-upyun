@@ -6,7 +6,7 @@ $imgurl = 'https://cn.bing.com' . $json_content['images'][0]['url'];
 
 //保存图片***
 function saveImage($path){
-    $dateToday = gmdate('d-M-Y');
+    $dateToday = gmdate('d-M-Y', time() + 3600 * 8);
     $image_name = 'bing/' . $dateToday . '.jpg';
     ob_start();
     readfile($path);
@@ -19,16 +19,14 @@ function saveImage($path){
 }
 saveImage($imgurl);
 
-//暂停5秒***
-sleep(5);
-
 //上传图片到又拍云***
+//又拍云连接信息
 $bucketName   = '********'; //你的又拍云存储库
 $operatorName = '********'; //你的存储库操作员
 $operatorPwd  = '********'; //你的存储库操作员密码
 
 //被上传的文件路径
-$dateToday = gmdate('d-M-Y');
+$dateToday = gmdate('d-M-Y', time() + 3600 * 8);
 $filePath = 'bing/' . $dateToday . '.jpg';
 $fileSize = filesize($filePath);
 //文件上传到服务器的服务端路径 修改文件名为日期
@@ -63,9 +61,6 @@ if (curl_getinfo($ch, CURLINFO_HTTP_CODE) === 200) {
     echo $errorMessage;
 }
 curl_close($ch);
-
-//暂停5秒***
-sleep(5);
 
 //删除本地缓存文件
 unlink($filePath);
