@@ -1,11 +1,16 @@
 <?php
+/*
+版权信息可删除，但请勿修改
+Copyright © 2020 by m@mcloc.cn
+*/
 //引入配置文件
 $config = include 'config.php';
 
 //初始化又拍云信息
-$bucketName   = $config['bucketName'];
+$bucketName = $config['bucketName'];
 $operatorName = $config['operatorName'];
-$operatorPwd  = $config['operatorPwd'];
+$operatorPwd = $config['operatorPwd'];
+$cdnDom = $config['domainName'];
 
 //获取图片链接
 $json_content = file_get_contents('https://cn.bing.com/HPImageArchive.aspx?format=js&idx=0&n=1&mkt=zh-CN');
@@ -72,9 +77,61 @@ function upImage($bucketName, $operatorName, $operatorPwd, $localFilePath, $upFi
 }
 
 //上传原始图片
-$localFilePath = 'bing/' . $dateToday . '.jpg'; //被上传的文件路径
+$localFilePath = $image_path_1; //被上传的文件路径
 $upFilePath = 'bing/' . $dateToday . '/' . $dateToday . '.jpg'; //文件上传到服务器的服务端路径 修改文件名为日期
 upImage($bucketName, $operatorName, $operatorPwd, $localFilePath, $upFilePath);
 
 //删除本地缓存文件
-unlink($localFilePath);
+unlink($image_path_1);
+
+//保存图片到本地gaussblur-5
+$image_path_gaussblur_5 = 'bing/' . $dateToday . '-gaussblur-5' . '.jpg';
+$imgurl_gaussblur_5 = $cdnDom . $upFilePath . '!/gaussblur/0x5';
+saveImage($image_path_gaussblur_5, $imgurl_gaussblur_5);
+
+//保存图片到本地gaussblur-15
+$image_path_gaussblur_15 = 'bing/' . $dateToday . '-gaussblur-15' . '.jpg';
+$imgurl_gaussblur_15 = $cdnDom . $upFilePath . '!/gaussblur/0x15';
+saveImage($image_path_gaussblur_15, $imgurl_gaussblur_15);
+
+//保存图片到本地gaussblur-25
+$image_path_gaussblur_25 = 'bing/' . $dateToday . '-gaussblur-25' . '.jpg';
+$imgurl_gaussblur_25 = $cdnDom . $upFilePath . '!/gaussblur/0x25';
+saveImage($image_path_gaussblur_25, $imgurl_gaussblur_25);
+
+//保存图片到本地gray
+$image_path_gray = 'bing/' . $dateToday . '-gray' . '.jpg';
+$imgurl_gray = $cdnDom . $upFilePath . '!/gray/true';
+saveImage($image_path_gray, $imgurl_gray);
+
+//上传图片gaussblur-5
+$localFilePath_gaussblur_5 = $image_path_gaussblur_5;
+$upFilePath_gaussblur_5 = 'bing/' . $dateToday . '/' . $dateToday . '-gaussblur-5' . '.jpg';
+upImage($bucketName, $operatorName, $operatorPwd, $localFilePath_gaussblur_5, $upFilePath_gaussblur_5);
+
+//上传图片gaussblur-15
+$localFilePath_gaussblur_15 = $image_path_gaussblur_15;
+$upFilePath_gaussblur_15 = 'bing/' . $dateToday . '/' . $dateToday . '-gaussblur-15' . '.jpg';
+upImage($bucketName, $operatorName, $operatorPwd, $localFilePath_gaussblur_15, $upFilePath_gaussblur_15);
+
+//上传图片gaussblur-25
+$localFilePath_gaussblur_25 = $image_path_gaussblur_25;
+$upFilePath_gaussblur_25 = 'bing/' . $dateToday . '/' . $dateToday . '-gaussblur-25' . '.jpg';
+upImage($bucketName, $operatorName, $operatorPwd, $localFilePath_gaussblur_25, $upFilePath_gaussblur_25);
+
+//上传图片gray
+$localFilePath_gray = $image_path_gray;
+$upFilePath_gray = 'bing/' . $dateToday . '/' . $dateToday . '-gray' . '.jpg';
+upImage($bucketName, $operatorName, $operatorPwd, $localFilePath_gray, $upFilePath_gray);
+
+//删除本地缓存文件gaussblur-5
+unlink($image_path_gaussblur_5);
+
+//删除本地缓存文件gaussblur-15
+unlink($image_path_gaussblur_15);
+
+//删除本地缓存文件gaussblur-25
+unlink($image_path_gaussblur_25);
+
+//删除本地缓存文件gray
+unlink($image_path_gray);
