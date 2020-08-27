@@ -11,6 +11,6 @@ $config['operatorPwd']   = '********';  //你的存储库操作员密码
 $config['domainName']    = '********';  //又拍云加速域名。注：结尾的 / 不能省略。如：'https://upyun.yourdom.com/'
 
 //延时
-$config['delay'] = 310; //默认延时310s，不建议修改
+$config['delay'] = 90; //默认延时90s，不建议修改
 
 return $config;
