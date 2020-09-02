@@ -36,6 +36,7 @@ $sql2 = "CREATE TABLE IF NOT EXISTS `bing_tbl`(
             `bing_id` INT UNSIGNED AUTO_INCREMENT,
             `bing_title` VARCHAR(1000),
             `bing_imgurl` VARCHAR(500),
+            `bing_imgurluhd` VARCHAR(500),
             `bing_imgname` VARCHAR(500),
             `bing_hsh` VARCHAR(500),
             `submission_date` VARCHAR(500),
@@ -192,13 +193,16 @@ unlink($image_path_gray);
 //服务器端图片完整路径
 $bingImgUrl = $cdnDom . $upFilePath;
 
+//超高清图片路径
+$bingImgUrlUhd = "https://cn.bing.com/th?id=OHR." . $bingImageName . "_UHD.jpg";
+
 //存入数据库
 //检查数据是否存在
 $sql3 = "SELECT * FROM bing_tbl WHERE bing_did='$bingDid'";
 $result3 = $conn2->query($sql3);
 if ($result3->num_rows > 0) {
     //更新数据
-    $sql5 = "UPDATE bing_tbl SET bing_title='$bingTitle', bing_imgurl='$bingImgUrl', bing_imgname='$bingImageName', bing_hsh='$bingHsh', submission_date='$dateToday', submission_fulldate='$dateTodayFull', bing_did='$bingDid'
+    $sql5 = "UPDATE bing_tbl SET bing_title='$bingTitle', bing_imgurl='$bingImgUrl', bing_imgurluhd='$bingImgUrlUhd', bing_imgname='$bingImageName', bing_hsh='$bingHsh', submission_date='$dateToday', submission_fulldate='$dateTodayFull', bing_did='$bingDid'
     WHERE bing_did=$bingDid";
     if ($conn2->query($sql5) === TRUE) {
         echo "记录更新成功";
@@ -208,9 +212,9 @@ if ($result3->num_rows > 0) {
 } else {
     //插入数据
     $sql4 = "INSERT INTO bing_tbl " .
-        "(bing_title, bing_imgurl, bing_imgname, bing_hsh, submission_date, submission_fulldate, bing_did) " .
+        "(bing_title, bing_imgurl, bing_imgurluhd, bing_imgname, bing_hsh, submission_date, submission_fulldate, bing_did) " .
         "VALUES " .
-        "('$bingTitle','$bingImgUrl','$bingImageName','$bingHsh','$dateToday','$dateTodayFull','$bingDid')";
+        "('$bingTitle','$bingImgUrl','$bingImgUrlUhd','$bingImageName','$bingHsh','$dateToday','$dateTodayFull','$bingDid')";
     if ($conn2->query($sql4) === TRUE) {
         echo "新记录插入成功";
     } else {
