@@ -36,11 +36,13 @@ $sql2 = "CREATE TABLE IF NOT EXISTS `bing_tbl`(
             `bing_id` INT UNSIGNED AUTO_INCREMENT,
             `bing_title` VARCHAR(1000),
             `bing_imgurl` VARCHAR(500),
+            `bing_imgurlcom_25` VARCHAR(500),
             `bing_imgurluhd` VARCHAR(500),
             `bing_imgname` VARCHAR(500),
             `bing_hsh` VARCHAR(500),
             `submission_date` VARCHAR(500),
             `submission_fulldate` VARCHAR(500),
+            `other` VARCHAR(1000),
             `bing_did` INT,
             PRIMARY KEY ( `bing_id` )
         )ENGINE=InnoDB DEFAULT CHARSET=utf8;";
@@ -158,6 +160,11 @@ $image_path_gray = 'bing/' . $dateToday . '-gray' . '.jpg';
 $imgurl_gray = $cdnDom . $upFilePath . '!/gray/true';
 saveImage($image_path_gray, $imgurl_gray);
 
+//保存图片到本地compress_25
+$image_path_compress_25 = 'bing/' . $dateToday . '-compress_25' . '.jpg';
+$imgurl_compress_25 = $cdnDom . $upFilePath . '!/scale/25';
+saveImage($image_path_compress_25, $imgurl_compress_25);
+
 //上传图片gaussblur-5
 $localFilePath_gaussblur_5 = $image_path_gaussblur_5;
 $upFilePath_gaussblur_5 = 'bing/' . $dateToday . '/' . $dateToday . '-gaussblur-5' . '.jpg';
@@ -178,6 +185,11 @@ $localFilePath_gray = $image_path_gray;
 $upFilePath_gray = 'bing/' . $dateToday . '/' . $dateToday . '-gray' . '.jpg';
 upImage($bucketName, $operatorName, $operatorPwd, $localFilePath_gray, $upFilePath_gray);
 
+//上传图片compress_25
+$localFilePath_compress_25 = $image_path_compress_25;
+$upFilePath_compress_25 = 'bing/' . $dateToday . '/' . $dateToday . '-compress_25' . '.jpg';
+upImage($bucketName, $operatorName, $operatorPwd, $localFilePath_compress_25, $upFilePath_compress_25);
+
 //删除本地缓存文件gaussblur-5
 unlink($image_path_gaussblur_5);
 
@@ -190,11 +202,17 @@ unlink($image_path_gaussblur_25);
 //删除本地缓存文件gray
 unlink($image_path_gray);
 
+//删除本地缓存文件compress_25
+unlink($image_path_compress_25);
+
 //服务器端图片完整路径
 $bingImgUrl = $cdnDom . $upFilePath;
 
 //超高清图片路径
 $bingImgUrlUhd = "https://cn.bing.com/th?id=OHR." . $bingImageName . "_UHD.jpg";
+
+//缩略图_25图片路径
+$bingImgUrlCom25 = $cdnDom . $upFilePath_compress_25;
 
 //存入数据库
 //检查数据是否存在
@@ -202,7 +220,7 @@ $sql3 = "SELECT * FROM bing_tbl WHERE bing_did='$bingDid'";
 $result3 = $conn2->query($sql3);
 if ($result3->num_rows > 0) {
     //更新数据
-    $sql5 = "UPDATE bing_tbl SET bing_title='$bingTitle', bing_imgurl='$bingImgUrl', bing_imgurluhd='$bingImgUrlUhd', bing_imgname='$bingImageName', bing_hsh='$bingHsh', submission_date='$dateToday', submission_fulldate='$dateTodayFull', bing_did='$bingDid'
+    $sql5 = "UPDATE bing_tbl SET bing_title='$bingTitle', bing_imgurl='$bingImgUrl', bing_imgurlcom_25='$bingImgUrlCom25', bing_imgurluhd='$bingImgUrlUhd', bing_imgname='$bingImageName', bing_hsh='$bingHsh', submission_date='$dateToday', submission_fulldate='$dateTodayFull', other='0', bing_did='$bingDid'
     WHERE bing_did=$bingDid";
     if ($conn2->query($sql5) === TRUE) {
         echo "记录更新成功";
@@ -212,9 +230,9 @@ if ($result3->num_rows > 0) {
 } else {
     //插入数据
     $sql4 = "INSERT INTO bing_tbl " .
-        "(bing_title, bing_imgurl, bing_imgurluhd, bing_imgname, bing_hsh, submission_date, submission_fulldate, bing_did) " .
+        "(bing_title, bing_imgurl, bing_imgurlcom_25, bing_imgurluhd, bing_imgname, bing_hsh, submission_date, submission_fulldate, other, bing_did) " .
         "VALUES " .
-        "('$bingTitle','$bingImgUrl','$bingImgUrlUhd','$bingImageName','$bingHsh','$dateToday','$dateTodayFull','$bingDid')";
+        "('$bingTitle','$bingImgUrl','$bingImgUrlCom25','$bingImgUrlUhd','$bingImageName','$bingHsh','$dateToday','$dateTodayFull','0','$bingDid')";
     if ($conn2->query($sql4) === TRUE) {
         echo "新记录插入成功";
     } else {

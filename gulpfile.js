@@ -36,6 +36,7 @@ gulp.task("sass", done => {
 gulp.task("js", done => {
     gulp.src("src/js/*.js")
         .pipe(sourcemaps.init())
+        .pipe(plumber())
         .pipe(babel({
             presets: ['es2015']
         }))
