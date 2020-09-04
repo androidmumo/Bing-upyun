@@ -42,6 +42,7 @@ $sql2 = "CREATE TABLE IF NOT EXISTS `bing_tbl`(
             `bing_hsh` VARCHAR(500),
             `submission_date` VARCHAR(500),
             `submission_fulldate` VARCHAR(500),
+            `bing_imgbase64` VARCHAR(10000),
             `other` VARCHAR(1000),
             `bing_did` INT,
             PRIMARY KEY ( `bing_id` )
@@ -75,6 +76,21 @@ $dateTodayFull = gmdate('d-M-Y H:i:s', time() + 3600 * 8);
 if (!is_dir("bing")) {
     mkdir("bing", 0755, true);
 }
+
+/*
+ * 图片转换为 base64格式编码 函数
+ * image_file：本地图片
+*/
+function base64EncodeImage($image_file)
+{
+    $base64_image = '';
+    $image_info = getimagesize($image_file);
+    $image_data = fread(fopen($image_file, 'r'), filesize($image_file));
+    $base64_image = 'data:' . $image_info['mime'] . ';base64,' . chunk_split(base64_encode($image_data));
+    // $base64_image = chunk_split(base64_encode($image_data));
+    return $base64_image;
+}
+
 
 //保存图片函数
 function saveImage($image_name, $url_path)
@@ -162,8 +178,13 @@ saveImage($image_path_gray, $imgurl_gray);
 
 //保存图片到本地compress_25
 $image_path_compress_25 = 'bing/' . $dateToday . '-compress_25' . '.jpg';
-$imgurl_compress_25 = $cdnDom . $upFilePath . '!/scale/25';
+$imgurl_compress_25 = $cdnDom . $upFilePath . '!bing25';
 saveImage($image_path_compress_25, $imgurl_compress_25);
+
+//保存图片到本地compress_1
+$image_path_compress_1 = 'bing/' . $dateToday . '-compress_1' . '.jpg';
+$imgurl_compress_1 = $cdnDom . $upFilePath . '!bing1';
+saveImage($image_path_compress_1, $imgurl_compress_1);
 
 //上传图片gaussblur-5
 $localFilePath_gaussblur_5 = $image_path_gaussblur_5;
@@ -190,6 +211,11 @@ $localFilePath_compress_25 = $image_path_compress_25;
 $upFilePath_compress_25 = 'bing/' . $dateToday . '/' . $dateToday . '-compress_25' . '.jpg';
 upImage($bucketName, $operatorName, $operatorPwd, $localFilePath_compress_25, $upFilePath_compress_25);
 
+//上传图片compress_1
+$localFilePath_compress_1 = $image_path_compress_1;
+$upFilePath_compress_1 = 'bing/' . $dateToday . '/' . $dateToday . '-compress_1' . '.jpg';
+upImage($bucketName, $operatorName, $operatorPwd, $localFilePath_compress_1, $upFilePath_compress_1);
+
 //删除本地缓存文件gaussblur-5
 unlink($image_path_gaussblur_5);
 
@@ -204,6 +230,12 @@ unlink($image_path_gray);
 
 //删除本地缓存文件compress_25
 unlink($image_path_compress_25);
+
+//缩略图_1 base64编码
+$imgBase64 = base64EncodeImage($image_path_compress_1);
+
+//删除本地缓存文件compress_1
+unlink($image_path_compress_1);
 
 //服务器端图片完整路径
 $bingImgUrl = $cdnDom . $upFilePath;
@@ -220,7 +252,7 @@ $sql3 = "SELECT * FROM bing_tbl WHERE bing_did='$bingDid'";
 $result3 = $conn2->query($sql3);
 if ($result3->num_rows > 0) {
     //更新数据
-    $sql5 = "UPDATE bing_tbl SET bing_title='$bingTitle', bing_imgurl='$bingImgUrl', bing_imgurlcom_25='$bingImgUrlCom25', bing_imgurluhd='$bingImgUrlUhd', bing_imgname='$bingImageName', bing_hsh='$bingHsh', submission_date='$dateToday', submission_fulldate='$dateTodayFull', other='0', bing_did='$bingDid'
+    $sql5 = "UPDATE bing_tbl SET bing_title='$bingTitle', bing_imgurl='$bingImgUrl', bing_imgurlcom_25='$bingImgUrlCom25', bing_imgurluhd='$bingImgUrlUhd', bing_imgname='$bingImageName', bing_hsh='$bingHsh', submission_date='$dateToday', submission_fulldate='$dateTodayFull', bing_imgbase64='$imgBase64', other='0', bing_did='$bingDid'
     WHERE bing_did=$bingDid";
     if ($conn2->query($sql5) === TRUE) {
         echo "记录更新成功";
@@ -230,9 +262,9 @@ if ($result3->num_rows > 0) {
 } else {
     //插入数据
     $sql4 = "INSERT INTO bing_tbl " .
-        "(bing_title, bing_imgurl, bing_imgurlcom_25, bing_imgurluhd, bing_imgname, bing_hsh, submission_date, submission_fulldate, other, bing_did) " .
+        "(bing_title, bing_imgurl, bing_imgurlcom_25, bing_imgurluhd, bing_imgname, bing_hsh, submission_date, submission_fulldate, bing_imgbase64, other, bing_did) " .
         "VALUES " .
-        "('$bingTitle','$bingImgUrl','$bingImgUrlCom25','$bingImgUrlUhd','$bingImageName','$bingHsh','$dateToday','$dateTodayFull','0','$bingDid')";
+        "('$bingTitle','$bingImgUrl','$bingImgUrlCom25','$bingImgUrlUhd','$bingImageName','$bingHsh','$dateToday','$dateTodayFull','$imgBase64','0','$bingDid')";
     if ($conn2->query($sql4) === TRUE) {
         echo "新记录插入成功";
     } else {

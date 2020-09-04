@@ -7,6 +7,7 @@
     <title>必应每日一图 - 领略世界之美</title>
     <link href="lib/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="lib/progressive-image.css">
     <link rel="stylesheet" href="https://at.alicdn.com/t/font_2042758_vrame6kfub.css">
 </head>
 
@@ -70,32 +71,32 @@
     </nav>
 
     <!-- 轮播图 -->
-    <div id="carouselExampleCaptions" class="container carousel slide" data-ride="carousel">
+    <div id="carouselExampleCaptions" class="container carousel slide" data-ride="carousel" width="1920px">
         <ol class="carousel-indicators">
             <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
             <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
             <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
         </ol>
-        <div id="carousel-js" class="carousel-inner">
-            <div class="carousel-item active">
-                <img src="" class="d-block w-100 rounded"
-                    alt="...">
+        <div class="carousel-inner">
+            <div id="carousel-js" class="carousel-item active">
+                <div class="progressive">
+                    <img data-src="https://bing.mcloc.cn/api/?day=0" src="https://bing.mcloc.cn/api/?day=0&thumbnail=1"
+                        class="d-block w-100 rounded preview lazy" alt="bing" height="1080px">
+                </div>
                 <div class="carousel-caption d-none d-md-block">
                     <h5></h5>
                     <p></p>
                 </div>
             </div>
             <div class="carousel-item">
-                <img src="" class="d-block w-100 rounded"
-                    alt="...">
+                <img src="https://bing.mcloc.cn/api/?day=1" class="d-block w-100 rounded" alt="bing">
                 <div class="carousel-caption d-none d-md-block">
                     <h5></h5>
                     <p></p>
                 </div>
             </div>
             <div class="carousel-item">
-                <img src="" class="d-block w-100 rounded"
-                    alt="...">
+                <img src="https://bing.mcloc.cn/api/?day=2" class="d-block w-100 rounded" alt="bing">
                 <div class="carousel-caption d-none d-md-block">
                     <h5></h5>
                     <p></p>
@@ -121,52 +122,89 @@
     <div class="container" id="pic-list">
 
         <div id="pic-js" class="row text-center justify-content-between">
-            <div class="pic-item my-3 shadow-sm rounded">
-                <img class="rounded img-fluid" src="" alt="">
+            <div id="pic-js-son0" data-day="0" class="pic-item my-3 shadow-sm rounded">
+                <div class="progressive">
+                    <img class="rounded img-fluid preview lazy" data-src="https://bing.mcloc.cn/api/?thumbnail=25&day=0"
+                        src="https://bing.mcloc.cn/api/?thumbnail=1&day=0" alt="">
+                </div>
                 <p class="my-2"></p>
             </div>
-            <div class="pic-item my-3 shadow-sm rounded">
-                <img class="rounded img-fluid" src="" alt="">
+            <div id="pic-js-son1" data-day="1" class="pic-item my-3 shadow-sm rounded">
+                <div class="progressive">
+                    <img class="rounded img-fluid preview lazy" data-src="https://bing.mcloc.cn/api/?thumbnail=25&day=1"
+                        src="https://bing.mcloc.cn/api/?thumbnail=1&day=1" alt="">
+                </div>
                 <p class="my-2"></p>
             </div>
-            <div class="pic-item my-3 shadow-sm rounded">
-                <img class="rounded img-fluid" src="" alt="">
+            <div id="pic-js-son2" data-day="2" class="pic-item my-3 shadow-sm rounded">
+                <div class="progressive">
+                    <img class="rounded img-fluid preview lazy" data-src="https://bing.mcloc.cn/api/?thumbnail=25&day=2"
+                        src="https://bing.mcloc.cn/api/?thumbnail=1&day=2" alt="">
+                </div>
                 <p class="my-2"></p>
             </div>
-            <div class="pic-item my-3 shadow-sm rounded">
-                <img class="rounded img-fluid" src="" alt="">
+            <div id="pic-js-son3" data-day="3" class="pic-item my-3 shadow-sm rounded">
+                <div class="progressive">
+                    <img class="rounded img-fluid preview lazy" data-src="https://bing.mcloc.cn/api/?thumbnail=25&day=3"
+                        src="https://bing.mcloc.cn/api/?thumbnail=1&day=3" alt="">
+                </div>
                 <p class="my-2"></p>
             </div>
-            <div class="pic-item my-3 shadow-sm rounded">
-                <img class="rounded img-fluid" src="" alt="">
+            <div id="pic-js-son4" data-day="4" class="pic-item my-3 shadow-sm rounded">
+                <div class="progressive">
+                    <img class="rounded img-fluid preview lazy" data-src="https://bing.mcloc.cn/api/?thumbnail=25&day=4"
+                        src="https://bing.mcloc.cn/api/?thumbnail=1&day=4" alt="">
+                </div>
                 <p class="my-2"></p>
             </div>
-            <div class="pic-item my-3 shadow-sm rounded">
-                <img class="rounded img-fluid" src="" alt="">
+            <div id="pic-js-son5" data-day="5" class="pic-item my-3 shadow-sm rounded">
+                <div class="progressive">
+                    <img class="rounded img-fluid preview lazy" data-src="https://bing.mcloc.cn/api/?thumbnail=25&day=5"
+                        src="https://bing.mcloc.cn/api/?thumbnail=1&day=5" alt="">
+                </div>
                 <p class="my-2"></p>
             </div>
-            <div class="pic-item my-3 shadow-sm rounded">
-                <img class="rounded img-fluid" src="" alt="">
+            <div id="pic-js-son6" data-day="6" class="pic-item my-3 shadow-sm rounded">
+                <div class="progressive">
+                    <img class="rounded img-fluid preview lazy" data-src="https://bing.mcloc.cn/api/?thumbnail=25&day=6"
+                        src="https://bing.mcloc.cn/api/?thumbnail=1&day=6" alt="">
+                </div>
                 <p class="my-2"></p>
             </div>
-            <div class="pic-item my-3 shadow-sm rounded">
-                <img class="rounded img-fluid" src="" alt="">
+            <div id="pic-js-son7" data-day="7" class="pic-item my-3 shadow-sm rounded">
+                <div class="progressive">
+                    <img class="rounded img-fluid preview lazy" data-src="https://bing.mcloc.cn/api/?thumbnail=25&day=7"
+                        src="https://bing.mcloc.cn/api/?thumbnail=1&day=7" alt="">
+                </div>
                 <p class="my-2"></p>
             </div>
-            <div class="pic-item my-3 shadow-sm rounded">
-                <img class="rounded img-fluid" src="" alt="">
+            <div id="pic-js-son8" data-day="8" class="pic-item my-3 shadow-sm rounded">
+                <div class="progressive">
+                    <img class="rounded img-fluid preview lazy" data-src="https://bing.mcloc.cn/api/?thumbnail=25&day=8"
+                        src="https://bing.mcloc.cn/api/?thumbnail=1&day=8" alt="">
+                </div>
                 <p class="my-2"></p>
             </div>
-            <div class="pic-item my-3 shadow-sm rounded">
-                <img class="rounded img-fluid" src="" alt="">
+            <div id="pic-js-son9" data-day="9" class="pic-item my-3 shadow-sm rounded">
+                <div class="progressive">
+                    <img class="rounded img-fluid preview lazy" data-src="https://bing.mcloc.cn/api/?thumbnail=25&day=9"
+                        src="https://bing.mcloc.cn/api/?thumbnail=1&day=9" alt="">
+                </div>
                 <p class="my-2"></p>
             </div>
-            <div class="pic-item my-3 shadow-sm rounded">
-                <img class="rounded img-fluid" src="" alt="">
+            <div id="pic-js-son10" data-day="10" class="pic-item my-3 shadow-sm rounded">
+                <div class="progressive">
+                    <img class="rounded img-fluid preview lazy" data-src="https://bing.mcloc.cn/api/?thumbnail=25&day=10"
+                        src="https://bing.mcloc.cn/api/?thumbnail=1&day=10" alt="">
+                </div>
                 <p class="my-2"></p>
             </div>
-            <div class="pic-item my-3 shadow-sm rounded"  data-toggle="modal" data-target="#exampleModal">
-                <img class="rounded img-fluid" src="" alt="">
+            <div id="pic-js-son11" data-day="11" class="pic-item my-3 shadow-sm rounded" data-toggle="modal"
+                data-target="#exampleModal">
+                <div class="progressive">
+                    <img class="rounded img-fluid preview lazy" data-src="https://bing.mcloc.cn/api/?thumbnail=25&day=11"
+                        src="https://bing.mcloc.cn/api/?thumbnail=1&day=11" alt="">
+                </div>
                 <p class="my-2"></p>
             </div>
         </div>
@@ -182,14 +220,16 @@
                 <div class="modal-body">
                     <div class="spinner-border text-info" role="status">
                         <span class="sr-only">Loading...</span>
-                      </div>
+                    </div>
                     <!-- <img class="rounded img-fluid" src="https://upyuns.mcloc.cn/bing/28-Aug-2020/28-Aug-2020.jpg" alt=""> -->
                 </div>
 
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭窗口</button>
-                    <button id="btnHd" type="button" class="btn btn-info">下载 <span class="badge badge-light">HD</span></button>
-                    <button id="btnUhd" type="button" class="btn btn-primary">下载 <span class="badge badge-light">UHD</span></button>
+                    <button id="btnHd" type="button" class="btn btn-info">下载 <span
+                            class="badge badge-light">HD</span></button>
+                    <button id="btnUhd" type="button" class="btn btn-primary">下载 <span
+                            class="badge badge-light">UHD</span></button>
                 </div>
             </div>
         </div>
@@ -209,6 +249,7 @@
     </script>
     <script src="lib/jquery-1.11.0.js"></script>
     <script src="lib/bootstrap.min.js"></script>
+    <script src="lib/progressive-image.js"></script>
     <script src="js/main.js"></script>
 </body>
 

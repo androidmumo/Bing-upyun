@@ -75,10 +75,29 @@ function getImgMsg(day) {
     });
     return imgMsg;
 }
+/* ajax获取图片信息 end */
 
-/* ajax获取图片名 end */
+/* 图片渐进式加载 */
+function imgpro(ele) {
+    new Progressive({
+        el: ele,
+        lazyClass: 'lazy',
+        removePreview: true,
+        scale: true
+    }).fire()
+}
 
-/* 生成轮播图并插入 */
+imgpro("#carousel-js");
+
+for (let i = 0; i < 12; i++) {
+    var ele = `#pic-js-son${i}`;
+    imgpro(ele);
+}
+
+//思路：通过循环对每个id进行渐进
+/* 图片渐进式加载 end */
+
+/* 生成轮播图文字并插入 */
 for (let i = 0; i < 3; i++) {
     var carouselStr = "";
     var imgMsg = getImgMsg(i);
@@ -86,34 +105,25 @@ for (let i = 0; i < 3; i++) {
     var imgTitS = imgTit.replace(/\([^\)]*\)/g, ""); //去除括号及空格
     imgTitS = imgTitS.replace(/\s*$/g, "");
 
-    var imgUrlDate = getImgUrlHd(todayTimeEn(i));
+    // var imgUrlDate = getImgUrlHd(todayTimeEn(i)); //生成HD图片url
 
     carouselStr = `
-        <img src="${imgUrlDate}" class="d-block w-100 rounded"
-            alt="${imgTitS}">
-        <div class="carousel-caption d-none d-md-block">
             <h5>${imgTitS}</h5>
             <p>${imgTit}</p>
-        </div>
     `
-    $("#carousel-js").children().eq(i).empty().append(carouselStr);
+    $(".carousel-caption").eq(i).empty().append(carouselStr);
 }
-/* 生成轮播图并插入 end */
+/* 生成轮播图文字并插入 end */
 
-/* 生成缩略图并插入 */
+/* 生成缩略图文字并插入 */
 for (let i = 0; i < 12; i++) {
-    var picStr = "";
     var imgMsg = getImgMsg(i);
     var imgTit = imgMsg["bing_title"];
     var imgTitS = imgTit.replace(/\([^\)]*\)/g, ""); //去除括号及空格
     imgTitS = imgTitS.replace(/\s*$/g, "");
 
-    var imgUrlDate = getImgUrlCom(todayTimeEn(i));
+    // var imgUrlDate = getImgUrlCom(todayTimeEn(i)); //生成com图片url
 
-    picStr = `
-    <img class="rounded img-fluid" src="${imgUrlDate}" alt="${imgTit}">
-    <p class="my-2">${imgTitS}</p>
-    `
-    $("#pic-js").children().eq(i).empty().append(picStr);
+    $("#pic-js").children().eq(i).children("p").empty().append(imgTitS);
 }
-/* 生成缩略图并插入 end */
+/* 生成缩略图文字并插入 end */

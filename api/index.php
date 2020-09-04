@@ -10,6 +10,7 @@ $gray = $_REQUEST['gray'];
 $day = $_REQUEST['day'];
 $type = $_REQUEST['type'];
 $random = $_REQUEST['random'];
+$thumbnail = $_REQUEST['thumbnail'];
 
 //引入配置文件
 $config = include 'php/config.php';
@@ -69,6 +70,13 @@ if ($type == "json") {
         }
         if ($blur == "25") {
             $image_name = 'bing/' . $dateEnd . '/' . $dateEnd . '-gaussblur-25' . '.jpg';
+        }
+    } else if($thumbnail){
+        if ($thumbnail == "25") {
+            $image_name = 'bing/' . $dateEnd . '/' . $dateEnd . '-compress_25' . '.jpg';
+        }
+        if ($thumbnail == "1") {
+            $image_name = 'bing/' . $dateEnd . '/' . $dateEnd . '-compress_1' . '.jpg';
         }
     } else if ($gray == "true") {
         $image_name = 'bing/' . $dateEnd . '/' . $dateEnd . '-gray' . '.jpg';
