@@ -77,7 +77,7 @@ function getImgMsg(day) {
 }
 /* ajax获取图片信息 end */
 
-/* 图片渐进式加载 */
+/* 图片渐进式加载 函数 */
 function imgpro(ele) {
     new Progressive({
         el: ele,
@@ -86,44 +86,12 @@ function imgpro(ele) {
         scale: true
     }).fire()
 }
-
-imgpro("#carousel-js");
-
-for (let i = 0; i < 12; i++) {
-    var ele = `#pic-js-son${i}`;
-    imgpro(ele);
-}
-
-//思路：通过循环对每个id进行渐进
 /* 图片渐进式加载 end */
 
-/* 生成轮播图文字并插入 */
-for (let i = 0; i < 3; i++) {
-    var carouselStr = "";
-    var imgMsg = getImgMsg(i);
-    var imgTit = imgMsg["bing_title"];
-    var imgTitS = imgTit.replace(/\([^\)]*\)/g, ""); //去除括号及空格
-    imgTitS = imgTitS.replace(/\s*$/g, "");
-
-    // var imgUrlDate = getImgUrlHd(todayTimeEn(i)); //生成HD图片url
-
-    carouselStr = `
-            <h5>${imgTitS}</h5>
-            <p>${imgTit}</p>
-    `
-    $(".carousel-caption").eq(i).empty().append(carouselStr);
+//返回参数的函数
+function getUrlParam(name) {
+    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+    var r = window.location.search.substr(1).match(reg); //匹配目标参数
+    if (r != null) return unescape(r[2]);
+    return null; //返回参数值
 }
-/* 生成轮播图文字并插入 end */
-
-/* 生成缩略图文字并插入 */
-for (let i = 0; i < 12; i++) {
-    var imgMsg = getImgMsg(i);
-    var imgTit = imgMsg["bing_title"];
-    var imgTitS = imgTit.replace(/\([^\)]*\)/g, ""); //去除括号及空格
-    imgTitS = imgTitS.replace(/\s*$/g, "");
-
-    // var imgUrlDate = getImgUrlCom(todayTimeEn(i)); //生成com图片url
-
-    $("#pic-js").children().eq(i).children("p").empty().append(imgTitS);
-}
-/* 生成缩略图文字并插入 end */

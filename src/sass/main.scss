@@ -8,28 +8,33 @@
     // vertical-align: middle;
 }
 
-#pic-list {
-    margin-top: 0rem;
-}
-
-#carouselExampleCaptions {
-    margin-top: 0.8rem;
-}
-
-#pic-tit {
+footer {
+    min-height: 20rem;
     margin-top: 5rem;
+    background: rgb(248, 249, 250);
+    overflow: hidden;
 
-    h4 {
+    &>div {
 
-        span{
-            font-size: small;
+        &>div {
+            margin: 2rem 0 0 0;
+        }
+    }
+
+    #foottext {
+        line-height: 30px;
+        font-size: 13px;
+
+        img {
+            height: 12px;
         }
     }
 }
 
-.pic-item {
-    padding: 1rem;
-    padding-bottom: 0;
-    width: 22rem;
-    margin: 0 auto;
+.links {
+
+    a {
+
+        color: #fff;
+    }
 }

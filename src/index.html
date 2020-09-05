@@ -6,14 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>必应每日一图 - 领略世界之美</title>
     <link href="lib/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="lib/progressive-image.css">
-    <link rel="stylesheet" href="https://at.alicdn.com/t/font_2042758_vrame6kfub.css">
+    <link rel="stylesheet" href="https://at.alicdn.com/t/font_2042758_2fi5tvz8vl4.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/index.css">
 </head>
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a id="header-text" class="navbar-brand align-middle" href="#"> <i id="header-icon"
+        <a id="header-text" class="navbar-brand align-middle" href="index.html"> <i id="header-icon"
                 class="iconfont icon-Bing align-bottom"></i> <strong>必应每日一图</strong> </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -81,7 +82,7 @@
             <div id="carousel-js" class="carousel-item active">
                 <div class="progressive">
                     <img data-src="https://bing.mcloc.cn/api/?day=0" src="https://bing.mcloc.cn/api/?day=0&thumbnail=1"
-                        class="d-block w-100 rounded preview lazy" alt="bing" height="1080px">
+                        class="d-block w-100 rounded preview lazy" alt="bing">
                 </div>
                 <div class="carousel-caption d-none d-md-block">
                     <h5></h5>
@@ -194,15 +195,16 @@
             </div>
             <div id="pic-js-son10" data-day="10" class="pic-item my-3 shadow-sm rounded">
                 <div class="progressive">
-                    <img class="rounded img-fluid preview lazy" data-src="https://bing.mcloc.cn/api/?thumbnail=25&day=10"
+                    <img class="rounded img-fluid preview lazy"
+                        data-src="https://bing.mcloc.cn/api/?thumbnail=25&day=10"
                         src="https://bing.mcloc.cn/api/?thumbnail=1&day=10" alt="">
                 </div>
                 <p class="my-2"></p>
             </div>
-            <div id="pic-js-son11" data-day="11" class="pic-item my-3 shadow-sm rounded" data-toggle="modal"
-                data-target="#exampleModal">
+            <div id="pic-js-son11" data-day="11" class="pic-item my-3 shadow-sm rounded">
                 <div class="progressive">
-                    <img class="rounded img-fluid preview lazy" data-src="https://bing.mcloc.cn/api/?thumbnail=25&day=11"
+                    <img class="rounded img-fluid preview lazy"
+                        data-src="https://bing.mcloc.cn/api/?thumbnail=25&day=11"
                         src="https://bing.mcloc.cn/api/?thumbnail=1&day=11" alt="">
                 </div>
                 <p class="my-2"></p>
@@ -211,33 +213,62 @@
 
     </div>
 
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-
-                <div class="modal-body">
-                    <div class="spinner-border text-info" role="status">
-                        <span class="sr-only">Loading...</span>
+    <!-- 页脚 -->
+    <footer class="container-fluid">
+        <div class="container">
+            <div class="row justify-content-around">
+                <div class="card text-white bg-secondary mb-3" style="width: 18rem;">
+                    <div class="card-header">关于这个网站</div>
+                    <div class="card-body">
+                        <h5 class="card-title">About this website</h5>
+                        <p class="card-text">
+                            必应搜索首页每天会更新一张高质量的背景图，我希望可以在接口中调用它们，但必应的服务在国内不稳定。本网站自动把每天的必应图片上传至又拍云，并提供了支持图片处理、回溯的接口。</p>
                     </div>
-                    <!-- <img class="rounded img-fluid" src="https://upyuns.mcloc.cn/bing/28-Aug-2020/28-Aug-2020.jpg" alt=""> -->
                 </div>
 
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭窗口</button>
-                    <button id="btnHd" type="button" class="btn btn-info">下载 <span
-                            class="badge badge-light">HD</span></button>
-                    <button id="btnUhd" type="button" class="btn btn-primary">下载 <span
-                            class="badge badge-light">UHD</span></button>
+                <div class="card text-white bg-secondary mb-3" style="width: 18rem;">
+                    <div class="card-header">友情链接</div>
+                    <div class="card-body">
+                        <h5 class="card-title">Links</h5>
+                        <p class="links" class="card-text"><a href="https://blog.mcloc.cn/">小马奔腾的博客</a></p>
+                    </div>
+                </div>
+
+                <div class="card" style="width: 18rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">提点建议吗？</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">some advices?</h6>
+                        <p class="card-text">这是一个年轻的网站，目前为作者一个人维护。难免有BUG，更新也可能不快。如果您对此站点有任何建议，欢迎在此提出！</p>
+                        <a href="https://blog.mcloc.cn/archives/632.html" class="card-link">提点建议</a>
+                        <a href="https://blog.mcloc.cn/" class="card-link">作者的博客</a>
+                    </div>
                 </div>
             </div>
+
+            <div class="row text-center align-middle">
+                <p id="foottext" class="col align-baseline text-secondary">
+                    mcloc.cn &copy;
+                    <a target="_blank" href="https://www.mcloc.cn/" class="text-secondary">
+                        2020 小马奔腾
+                    </a>&nbsp;|&nbsp;
+                    <a target="_blank" href="http://www.beian.miit.gov.cn" class="text-secondary">
+                        晋ICP备20001086号-1
+                    </a>&nbsp;|&nbsp;
+                    <a target="_blank"
+                        href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=41080202000141"
+                        class="text-secondary">
+                        <img src="https://www.mcloc.cn/wp-content/uploads/2020/04/beiantubiao-18.png" />
+                        豫公网安备 41080202000141号
+                    </a>&nbsp;|&nbsp;
+                    <a target="_blank" href="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral"
+                        class="text-secondary">
+                        本网站由
+                        <img src="static/upyun_logo5.png" alt="" class="align-middle">
+                        提供CDN加速/云存储服务
+                    </a>
+                </p>
+            </div>
         </div>
-    </div>
-
-    <!-- 页脚 -->
-    <footer>
-
     </footer>
 
     <!-- 旧版 IE 升级提示弹窗代码 -->
@@ -251,6 +282,7 @@
     <script src="lib/bootstrap.min.js"></script>
     <script src="lib/progressive-image.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/index.js"></script>
 </body>
 
 </html>
