@@ -10,6 +10,22 @@ $("#bigimg-wrap").children(".progressive").empty().append(bigImgStr);
 //图片渐进式加载
 imgpro("#bigimg-wrap");
 
+/* ajax获取图片信息 */
+function getImgMsg(day) {
+    var imgMsg = "";
+    $.ajax({
+        type: "GET",
+        async: false,
+        url: "https://bing.mcloc.cn/api/",
+        data: `type=json&day=${day}`,
+        success: function (msg) {
+            imgMsg = $.parseJSON(msg);
+        }
+    });
+    return imgMsg;
+}
+/* ajax获取图片信息 end */
+
 //调用ajax函数 获取此图片信息
 var detailMsg = getImgMsg(daydata);
 var imgSubDate = detailMsg["submission_date"];
@@ -25,7 +41,7 @@ $(".bigimg-text").empty().append(imgTit);
 
 //评论系统
 new Valine({
-    el: '********',
+    el: '#vcomments',
     appId: '********',
     appKey: '********',
     path: `${imgSubDate}`

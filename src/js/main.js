@@ -61,21 +61,23 @@ $("#btnToday").click(function () {
 });
 /* 点击导航栏按钮下载今日图片 end */
 
-/* ajax获取图片信息 */
-function getImgMsg(day) {
-    var imgMsg = "";
-    $.ajax({
-        type: "GET",
-        async: false,
-        url: "https://bing.mcloc.cn/api/",
-        data: `type=json&day=${day}`,
-        success: function (msg) {
-            imgMsg = $.parseJSON(msg);;
-        }
-    });
-    return imgMsg;
-}
-/* ajax获取图片信息 end */
+//以下函数在index.js中已不再需要，因为需要调用此函数的原代码（/* 生成轮播图文字并插入 */ ~ /* 生成缩略图文字并插入 end */）已被递归方法（/* 轮播图文字 （递归优化） */ ~ /* 缩略图文字 （递归优化） end */）替代。页面加载速度显著加快。
+//但在detail.js中仍然需要
+// /* ajax获取图片信息 */
+// function getImgMsg(day) {
+//     var imgMsg = "";
+//     $.ajax({
+//         type: "GET",
+//         async: false,
+//         url: "https://bing.mcloc.cn/api/",
+//         data: `type=json&day=${day}`,
+//         success: function (msg) {
+//             imgMsg = $.parseJSON(msg);
+//         }
+//     });
+//     return imgMsg;
+// }
+// /* ajax获取图片信息 end */
 
 /* 图片渐进式加载 函数 */
 function imgpro(ele) {
