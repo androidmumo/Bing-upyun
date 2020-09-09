@@ -14,7 +14,7 @@
 
 
 
-<img src="C:\Users\andro\Downloads\screenshot-bing.mcloc.cn-2020.09.09-20_19_38.jpg" alt="screenshot-bing.mcloc.cn-2020.09.09-20_19_38" style="zoom:50%;" />
+<img src="img\screenshot-bing.mcloc.cn-2020.09.09-20_19_38.jpg" alt="screenshot-bing.mcloc.cn-2020.09.09-20_19_38" style="zoom:50%;" />
 
 
 
@@ -38,13 +38,11 @@
 https://bing.mcloc.cn/
 ```
 
-此接口为[小马奔腾](https://blog.mcloc.cn/)免费提供，支持最新的特性（可能含有Beta版功能），请合理使用。
-
 
 
 ##### 2.2 前端效果（首页）
 
-<img src="C:\Users\andro\Downloads\screenshot-bing.mcloc.cn-2020.09.09-18_59_14.jpg" alt="screenshot-bing.mcloc.cn-2020.09.09-18_59_14" style="zoom:50%;" />
+<img src="img\screenshot-bing.mcloc.cn-2020.09.09-18_59_14.jpg" alt="screenshot-bing.mcloc.cn-2020.09.09-18_59_14" style="zoom:50%;" />
 
 
 
@@ -76,6 +74,16 @@ https://bing.mcloc.cn/
 |  random   | （暂未开发） |             -              |                -                |                              -                               |
 
 注意：`day` 和其余参数可以组合使用，除此之外的其他参数之间暂不支持组合使用。例如，不能返回灰阶的高斯模糊图片，可以返回n天前的高斯模糊图片。
+
+
+
+##### 3.2 接口DEMO
+
+```
+https://bing.mcloc.cn/api
+```
+
+此接口为[小马奔腾](https://blog.mcloc.cn/)免费提供，支持最新的特性（可能含有Beta版功能），请合理使用。
 
 
 
