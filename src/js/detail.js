@@ -37,14 +37,14 @@ var imgUrlUhd = detailMsg["bing_imgurluhd"];
 $('title').text(imgTit);
 
 //添加图片标题
-$(".bigimg-text").empty().append(imgTit);
+$(".bigimg-text").empty().append(`<span class="badge badge-secondary">${imgSubDate}</span>&nbsp;` + imgTit);
 
 //评论系统
 new Valine({
     el: '#vcomments',
     appId: '********',
     appKey: '********',
-    path: `${imgSubDate}`
+    path: `${imgSubDate}` //不同图片加载不同的评论
 })
 
 //将数据写入模态框

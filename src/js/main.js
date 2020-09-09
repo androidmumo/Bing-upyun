@@ -97,3 +97,41 @@ function getUrlParam(name) {
     if (r != null) return unescape(r[2]);
     return null; //返回参数值
 }
+
+//计时器&进度条
+let keyTime = new Date();
+keyTime.setDate(keyTime.getDate() + 1)
+keyTime.setHours(0);
+keyTime.setMinutes(1);
+keyTime.setSeconds(30);
+keyTime.setMilliseconds(0);
+keyTime = keyTime.getTime();
+
+function timer(keyTime) {
+    var nowTime = new Date();
+    var t = keyTime - nowTime.getTime();
+    var h = ~~(t / 1000 / 60 / 60 % 24);
+    if (h < 10) {
+        h = "0" + h;
+    }
+    var m = ~~(t / 1000 / 60 % 60);
+    if (m < 10) {
+        m = "0" + m;
+    }
+
+    var s = ~~(t / 1000 % 60);
+    if (s < 10) {
+        s = "0" + s;
+    }
+    $("#h").empty().append(h);
+    $("#m").empty().append(m);
+    $("#s").empty().append(s);
+
+    //进度条
+    var barPercentage = Math.floor((1 - t / (24 * 60 * 60 * 1000)) * 10000) / 100;
+    $("#js-progress").attr("style", `width:${barPercentage}%`);
+    $("#js-progress").attr("aria-valuenow", barPercentage);
+    $("#js-progress").empty().append(`${barPercentage}%`);
+}
+timer(keyTime);
+setInterval("timer(keyTime)", 1000);

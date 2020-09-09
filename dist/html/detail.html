@@ -22,7 +22,21 @@
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <nav class="navbar navbar-light bg-light mr-auto">
+
+            <div class="col align-self-end">
+                <div class="progress row" style="width: 13.2rem">
+                    <div id="js-progress" class="progress-bar progress-bar-striped bg-info" role="progressbar"
+                        style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">25%</div>
+                </div>
+                <div class="row">
+                    <span>离下次图片更新还有&nbsp;&nbsp;</span>
+                    <span id="h"></span>:
+                    <span id="m"></span>:
+                    <span id="s"></span>
+                </div>
+            </div>
+
+            <nav class="navbar-light bg-light mr-auto">
                 <form class="form-inline">
                     <button id="btnToday" class="btn btn-sm btn-info" type="button">
                         下载今日壁纸 <span class="badge badge-light">HD</span>
