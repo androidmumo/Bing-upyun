@@ -75,6 +75,9 @@ $("#btnHd").click(function () {
         }
     }
     x.send();
+
+    //弹窗
+    layer.msg('下载已开始');
 });
 
 $("#btnUhd").click(function () {
@@ -98,5 +101,8 @@ $("#btnUhd").click(function () {
         }
     }
     x.send();
+
+    //弹窗
+    layer.msg('下载已开始');
 });
 /* 点击模态框按钮下载图片 end */

@@ -58,6 +58,9 @@ $("#btnToday").click(function () {
         }
     }
     x.send();
+
+    //弹窗
+    layer.msg('下载已开始');
 });
 /* 点击导航栏按钮下载今日图片 end */
 

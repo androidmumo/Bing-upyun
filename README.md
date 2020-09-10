@@ -14,7 +14,7 @@
 
 
 
-<img src="img\screenshot-bing.mcloc.cn-2020.09.09-20_19_38.jpg" alt="screenshot-bing.mcloc.cn-2020.09.09-20_19_38" style="zoom:50%;" />
+<img src="./img/screenshot-bing.mcloc.cn-2020.09.09-20_19_38.jpg" alt="screenshot-bing.mcloc.cn-2020.09.09-20_19_38" style="zoom:50%;" />
 
 
 
@@ -42,7 +42,7 @@ https://bing.mcloc.cn/
 
 ##### 2.2 前端效果（首页）
 
-<img src="img\screenshot-bing.mcloc.cn-2020.09.09-18_59_14.jpg" alt="screenshot-bing.mcloc.cn-2020.09.09-18_59_14" style="zoom:50%;" />
+<img src="./img/screenshot-bing.mcloc.cn-2020.09.09-18_59_14.jpg" alt="screenshot-bing.mcloc.cn-2020.09.09-18_59_14" style="zoom:50%;" />
 
 
 
@@ -126,6 +126,7 @@ https://bing.mcloc.cn/api
     │   ├── index.js		// 首页js
     │   └── main.js			// 主js
     ├── lib					//第三方库
+    │   ├── layer
     │   ├── Valine.min.js
     │   ├── bootstrap.min.css.map
     │   ├── bootstrap.min.css
