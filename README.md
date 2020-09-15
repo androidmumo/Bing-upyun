@@ -66,7 +66,7 @@ https://bing.mcloc.cn/
 
 |  参数名   |   是否必须   |            参数            |            返回结果             |                             备注                             |
 | :-------: | :----------: | :------------------------: | :-----------------------------: | :----------------------------------------------------------: |
-|   type    |      否      |         json或其他         |            json数据             |                   参数除json外，其余都无效                   |
+|   type    |      否      |         json或其他         |            json数据             |             参数除json外，其余都无效（输出图片）             |
 |   blur    |      否      |          5/15/25           |   返回高斯模糊程度不同的图片    |                    只支持5/15/25三个等级                     |
 |   gray    |      否      |         true/false         |      灰阶图片/正常色彩图片      |                              -                               |
 |    day    |      否      | 数字n（大于等于0的正整数） |           n天前的图片           |                  n的范围取决于程序运行天数                   |
@@ -74,6 +74,42 @@ https://bing.mcloc.cn/
 |  random   | （暂未开发） |             -              |                -                |                              -                               |
 
 注意：`day` 和其余参数可以组合使用，除此之外的其他参数之间暂不支持组合使用。例如，不能返回灰阶的高斯模糊图片，可以返回n天前的高斯模糊图片。
+
+
+
+##### json数据格式：
+
+```
+{
+"bing_id": "21",
+"bing_title": "日落时分中央海岸入口海滩上的救生员小屋，澳大利亚新南威尔士州 (© Yury Prokopenko/Getty Images)",
+"bing_imgurl": "https://upyuns.mcloc.cn/bing/15-Sep-2020/15-Sep-2020.jpg",
+"bing_imgurlcom_25": "https://upyuns.mcloc.cn/bing/15-Sep-2020/15-Sep-2020-compress_25.jpg",
+"bing_imgurluhd": "https://cn.bing.com/th?id=OHR.LifeguardEntrance_ZH-CN7394984988_UHD.jpg",
+"bing_imgname": "LifeguardEntrance_ZH-CN7394984988",
+"bing_hsh": "a8712ff7ed3690123f96c2f95830b9f6",
+"submission_date": "15-Sep-2020",
+"submission_fulldate": "15-Sep-2020 00:01:01",
+"bing_imgbase64": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEASABIAAD/2wBDAAMCAgMCAgMDAwMEAwMEBQgFBQQEBQoHBwYIDAoMDAsK\r\nCwsNDhIQDQ4RDgsLEBYQERMUFRUVDA8XGBYUGBIUFRT/2wBDAQMEBAUEBQkFBQkUDQsNFBQUFBQU\r\nFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBT/wAARCAAJABADAREA\r\nAhEBAxEB/8QAFwAAAwEAAAAAAAAAAAAAAAAAAgMHCP/EACUQAAEEAQMCBwAAAAAAAAAAAAECAwQF\r\nEQAGEgcxNDdhc3Sxs//EABcBAAMBAAAAAAAAAAAAAAAAAAMFBgT/xAAnEQABAwIEBQUAAAAAAAAA\r\nAAABAAIDESEEEnGREzI0grExYXKBof/aAAwDAQACEQMRAD8ALpfa2VFBdK26liOlAdczeMFsN8iA\r\noBSVcRkEA5HbQ8bNhwQDMAdKn8KosCcrXF0VR8qDYhJuJx3Nf2KLawiSYrLCVsR2JraXIzKSAQt5\r\nZwvuMEJHoDjS5mJcM2V7aXob1P0AKblbomwSPdx2kelqiw9yTfZZz2L5Ebz+cz9alJ+rj0Q4eil1\r\nCpEjwF57VZ+Wlw5m93lNhySdvhf/2Q==\r\n",
+"other": "0",
+"bing_did": "20200915"
+}
+```
+
+|        字段         |            值             |               备注               |
+| :-----------------: | :-----------------------: | :------------------------------: |
+|       bing_id       |            ID             |                                  |
+|     bing_title      |         图片标题          |                                  |
+|     bing_imgurl     |    1920×1080 图片地址     |                                  |
+|  bing_imgurlcom_25  |     480×270 图片地址      |                                  |
+|   bing_imgurluhd    |    UHD超高清 图片地址     | 注意：分辨率不固定、无又拍云加速 |
+|    bing_imgname     |     图片文件原始名字      |  注意：与又拍云中的文件名不一致  |
+|      bing_hsh       |          哈希值           |                                  |
+|   submission_date   |       提交保存时间        |                                  |
+| submission_fulldate |     详细提交保存时间      |                                  |
+|   bing_imgbase64    | 16px×9px 缩略图base64编码 |       一般用于图片渐进加载       |
+|        other        |         保留字段          |                                  |
+|      bing_did       |        唯一图片ID         |          格式为保存日期          |
 
 
 
