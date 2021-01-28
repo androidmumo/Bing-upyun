@@ -16,6 +16,9 @@ $config['mysqlUsername'] = '********';  //MySQL数据库用户名
 $config['mysqlPassword'] = '********';  //MySQL数据库密码
 $config['mysqlDbname']   = '********';  //MySQL数据库名
 
+//第一次访问URL的日期,例如：2021-01-26
+$dateStart='2021-01-26';
+
 //延时
 $config['delay'] = 90; //默认延时90s，不建议修改
 

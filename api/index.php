@@ -53,13 +53,19 @@ if ($type == "json") {
 
     echo $return;
 } else {
-
-    if (!$day) {
-        $dateToday = gmdate('d-M-Y', time() + 3600 * 8 - $delay);
-        $dateEnd = $dateToday;
-    } else {
-        $dateEnd = gmdate('d-M-Y', time() + 3600 * 8 - $delay - ($day * 3600 * 24));
-    }
+	if ($random) {
+		$dateS = strtotime($dateStart);
+		$interval = floor((time() - $dateS) / 60 / 60 / 24 );
+		$randomDay = rand(0, $interval);
+		$dateEnd = gmdate('d-M-Y', time() + 3600 * 8 - $delay - ( $randomDay * 3600 * 24));
+	} else {
+		if ($day) {
+			$dateEnd = gmdate('d-M-Y', time() + 3600 * 8 - $delay - ($day * 3600 * 24));
+		} else {
+			$dateToday = gmdate('d-M-Y', time() + 3600 * 8 - $delay);
+			$dateEnd = $dateToday;
+		}
+	}
 
     if ($blur) {
         if ($blur == "5") {
