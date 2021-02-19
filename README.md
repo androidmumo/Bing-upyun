@@ -144,7 +144,7 @@ https://bing.mcloc.cn/api
 
 如图所示：
 
-<img src="./img/Snipaste_2021-02-19_21-47-56.png" alt="screenshot-bing.mcloc.cn-2020.09.09-20_19_38" style="zoom:50%;" />
+<img src="./img/Snipaste_2021-02-19_21-47-56.png" alt="Snipaste_2021-02-19_21-47-56" style="zoom:50%;" />
 
 ##### 4.1.2 目录结构
 
