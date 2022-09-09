@@ -72,7 +72,7 @@ $("#btnToday").click(function () {
 //     $.ajax({
 //         type: "GET",
 //         async: false,
-//         url: "https://bing.mcloc.cn/api/",
+//         url: "https://bing.nxingcloud.co/api/",
 //         data: `type=json&day=${day}`,
 //         success: function (msg) {
 //             imgMsg = $.parseJSON(msg);
