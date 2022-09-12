@@ -5,16 +5,16 @@ Copyright © 2020 by m@mcloc.cn
 */
 
 //又拍云连接信息
-$config['bucketName']    = 'bing-nxing';  //你的又拍云存储库
+$config['bucketName']    = 'bing';  //你的又拍云存储库
 $config['operatorName']  = 'bing';  //你的存储库操作员
-$config['operatorPwd']   = '2JJLtQ0fvgXekZeIWBBYo6EOBvrtFZbs';  //你的存储库操作员密码
-$config['domainName']    = 'https://ubing.nxingcloud.co/';  //又拍云加速域名。注：结尾的 / 不能省略。如：'https://upyun.yourdom.com/'
+$config['operatorPwd']   = '';  //你的存储库操作员密码
+$config['domainName']    = '';  //又拍云加速域名。注：结尾的 / 不能省略。如：'https://upyun.yourdom.com/'
 
 //数据库信息
 $config['mysqlHost']     = 'localhost:3306';  //MySQL数据库主机名
-$config['mysqlUsername'] = 'bing_nxingcloud_';  //MySQL数据库用户名
-$config['mysqlPassword'] = 'iaB8stYrtFF7nicS';  //MySQL数据库密码
-$config['mysqlDbname']   = 'bing_nxingcloud_';  //MySQL数据库名
+$config['mysqlUsername'] = 'bing';  //MySQL数据库用户名
+$config['mysqlPassword'] = '';  //MySQL数据库密码
+$config['mysqlDbname']   = '';  //MySQL数据库名
 
 //延时
 $config['delay'] = 90; //默认延时90s，不建议修改
