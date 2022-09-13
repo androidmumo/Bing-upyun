@@ -4,6 +4,9 @@
 Copyright © 2020 by m@mcloc.cn
 */
 
+//网站开始运行日期，供获取随机图功能使用
+$config['startdate']     = '****-**-**';
+
 //又拍云连接信息
 $config['bucketName']    = 'bing';  //你的又拍云存储库
 $config['operatorName']  = 'bing';  //你的存储库操作员

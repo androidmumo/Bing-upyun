@@ -16,6 +16,7 @@ $thumbnail = $_REQUEST['thumbnail'];
 $config = include 'php/config.php';
 
 //初始化配置
+$startdate = $config['startdate'];
 $cdnDom = $config['domainName'];
 $delay = $config['delay'];
 
@@ -60,7 +61,7 @@ if ($type == "json") {
         if ($random) {
             // 获取当前时间与程序运行时间之间的随机整数。
             $Date_1=date("Y-m-d");
-            $Date_2="2022-09-09"; //这里应填为网站开始运行的日期
+            $Date_2= $startdate;
             $d1=strtotime($Date_1);
             $d2=strtotime($Date_2);
             $Days=round(($d1-$d2)/3600/24);
