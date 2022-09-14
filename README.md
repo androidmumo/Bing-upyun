@@ -5,7 +5,7 @@
 
 > ### :warning: 注意：此项目已停止维护！
 > 
-> 若有需要，请移步： [bing-vue](https://github.com/androidmumo/bing-vue)，使用vue3构建的必应每日一图。
+> 若有需要，请移步： [bing](https://github.com/androidmumo/bing)，使用vue3构建的必应每日一图。
 > 
 > 此项目以后不会添加新功能，但可能会有修复bug的更新。
 > 
