@@ -16,6 +16,7 @@ $thumbnail = $_REQUEST['thumbnail'];
 $config = include 'php/config.php';
 
 //初始化配置
+$startdate = $config['startdate'];
 $cdnDom = $config['domainName'];
 $delay = $config['delay'];
 
@@ -54,10 +55,25 @@ if ($type == "json") {
     echo $return;
 } else {
 
+    //如果没有指定获取某一天图片
     if (!$day) {
-        $dateToday = gmdate('d-M-Y', time() + 3600 * 8 - $delay);
-        $dateEnd = $dateToday;
-    } else {
+        //检查随机数参数是否为真，若为真则获取随机某天前的图片
+        if ($random) {
+            // 获取当前时间与程序运行时间之间的随机整数。
+            $Date_1=date("Y-m-d");
+            $Date_2= $startdate;
+            $d1=strtotime($Date_1);
+            $d2=strtotime($Date_2);
+            $Days=round(($d1-$d2)/3600/24);
+            $randdays = mt_rand(0, $Days);
+            $dateEnd = gmdate('d-M-Y', time() + 3600 * 8 - $delay - ($randdays * 3600 * 24));
+        //若不获取随机图则返回当天图片
+        }else {
+            $dateToday = gmdate('d-M-Y', time() + 3600 * 8 - $delay);
+            $dateEnd = $dateToday;
+        }
+    //指定获取某n天前的图片
+    }else {
         $dateEnd = gmdate('d-M-Y', time() + 3600 * 8 - $delay - ($day * 3600 * 24));
     }
 
@@ -71,7 +87,7 @@ if ($type == "json") {
         if ($blur == "25") {
             $image_name = 'bing/' . $dateEnd . '/' . $dateEnd . '-gaussblur-25' . '.jpg';
         }
-    } else if($thumbnail){
+    } else if ($thumbnail) {
         if ($thumbnail == "25") {
             $image_name = 'bing/' . $dateEnd . '/' . $dateEnd . '-compress_25' . '.jpg';
         }

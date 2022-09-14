@@ -3,7 +3,7 @@ let daydata = getUrlParam("daydata");
 
 //生成bigimg
 var bigImgStr = `
-            <img data-src="https://bing.mcloc.cn/api/?day=${daydata}" src="https://bing.mcloc.cn/api/?day=${daydata}&thumbnail=1" class="d-block w-100 rounded preview lazy" alt="bing">
+            <img data-src="https://bing.nxingcloud.co/api/?day=${daydata}" src="https://bing.nxingcloud.co/api/?day=${daydata}&thumbnail=1" class="d-block w-100 rounded preview lazy" alt="bing">
 `
 $("#bigimg-wrap").children(".progressive").empty().append(bigImgStr);
 
@@ -16,7 +16,7 @@ function getImgMsg(day) {
     $.ajax({
         type: "GET",
         async: false,
-        url: "https://bing.mcloc.cn/api/",
+        url: "https://bing.nxingcloud.co/api/",
         data: `type=json&day=${day}`,
         success: function (msg) {
             imgMsg = $.parseJSON(msg);
@@ -49,7 +49,7 @@ new Valine({
 
 //将数据写入模态框
 var modalImgStr = `
-<img class="rounded img-fluid" src="https://bing.mcloc.cn/api/?day=${daydata}" alt="">
+<img class="rounded img-fluid" src="https://bing.nxingcloud.co/api/?day=${daydata}" alt="">
 `
 $(".modal-img-wrap").empty().append(modalImgStr);
 
